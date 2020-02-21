@@ -6,9 +6,7 @@
         public function __construct($filename, $mode = "r")
         {
             if (!file_exists($filename)) {
-    
                 throw new Exception("File not found");
-    
             }
     
             $this->file = new SplFileObject($filename, $mode);
@@ -42,14 +40,10 @@
         public function iterate($type = "Text", $bytes = NULL)
         {
             if ($type == "Text") {
-    
                 return new NoRewindIterator($this->iterateText());
-    
             } else {
-    
                 return new NoRewindIterator($this->iterateBinary($bytes));
             }
-    
         }
     }
      
@@ -59,7 +53,6 @@
 
         public function __construct($arrayContent) {
             $this->arrayContent = $arrayContent;
-            // some other code to add some stuff to foo
         }
 
         function RecursiveToGetArrayContent($dir){
@@ -91,7 +84,7 @@
             $arrayGetContent = array();
             foreach($arrayContent as $value){
                 $largefile = new BigFile($value);
-                $iterator = $largefile->iterate("Text"); // Text or Binary based on your file type
+                $iterator = $largefile->iterate("Text");
                 
                 $text = "";
                 foreach ($iterator as $line) {
